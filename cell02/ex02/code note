@@ -1,0 +1,10 @@
+cd discovery_piscine
+mkdir cell02
+cd cell02
+mkdir ex02
+cd ex02
+mkdir .sdir1
+mkdir dir1
+echo txt1 > text1
+echo ..stxt1 > ..stxt1
+ls | paste -s -d , > midLS
