@@ -1,54 +1,47 @@
-$(document).ready(function () {
-  const list = $("#ft_list");
-  const button = $("#newBtn");
+const list = document.getElementById("ft_list");
+const button = document.getElementById("newBtn");
 
-  button.click(createTodo);
+button.addEventListener("click", createTodo);
 
-  function createTodo() {
-    const text = prompt("Enter a new TO DO:");
-    if (!text || text.trim() === "") return;
+function createTodo() {
+  const text = prompt("Enter a new TO DO:");
+  if (!text || text.trim() === "") return;
 
-    addTodo(text);
-    saveTodos();
-  }
+  addTodo(text);
+  saveTodos();
+}
 
-  function addTodo(text) {
-    const div = $("<div></div>")
-      .addClass("todo")
-      .text(text);
+function addTodo(text) {
+  const div = document.createElement("div");
+  div.className = "todo";
+  div.textContent = text;
 
-    div.click(function () {
-      const confirmDelete = confirm("Remove this TO DO?");
-      if (confirmDelete) {
-        $(this).remove();
-        saveTodos();
-      }
-    });
+  div.addEventListener("click", () => {
+    const confirmDelete = confirm("Remove this TO DO?");
+    if (confirmDelete) {
+      div.remove();
+      saveTodos();
+    }
+  });
 
-    list.prepend(div);
-  }
+  list.prepend(div);
+}
 
-  function saveTodos() {
-    const todos = [];
+function saveTodos() {
+  const todos = [];
+  document.querySelectorAll(".todo").forEach(todo => {
+    todos.push(todo.textContent);
+  });
 
-    $(".todo").each(function () {
-      todos.push($(this).text());
-    });
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
 
-    document.cookie =
-      "todos=" + encodeURIComponent(JSON.stringify(todos)) + "; path=/";
-  }
+function loadTodos() {
+  const stored = localStorage.getItem("todos");
+  if (!stored) return;
 
-  function loadTodos() {
-    const cookie = document.cookie
-      .split("; ")
-      .find(row => row.startsWith("todos="));
+  const data = JSON.parse(stored);
+  data.forEach(text => addTodo(text));
+}
 
-    if (!cookie) return;
-
-    const data = JSON.parse(decodeURIComponent(cookie.split("=")[1]));
-    data.forEach(text => addTodo(text));
-  }
-
-  loadTodos();
-});
+loadTodos();
