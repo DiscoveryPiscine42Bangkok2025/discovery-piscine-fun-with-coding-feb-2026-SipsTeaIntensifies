@@ -7,7 +7,7 @@ function createTodo() {
   const text = prompt("Enter a new TO DO:");
   if (!text || text.trim() === "") return;
 
-  addTodo(text.trim());
+  addTodo(text);
   saveTodos();
 }
 
@@ -16,7 +16,7 @@ function addTodo(text) {
   div.className = "todo";
   div.textContent = text;
 
-  div.addEventListener("click", function () {
+  div.addEventListener("click", () => {
     const confirmDelete = confirm("Remove this TO DO?");
     if (confirmDelete) {
       div.remove();
@@ -33,24 +33,16 @@ function saveTodos() {
     todos.push(todo.textContent);
   });
 
-  document.cookie =
-    "todos=" +
-    encodeURIComponent(JSON.stringify(todos)) +
-    "; path=/; max-age=31536000";
+  localStorage.setItem("todos", JSON.stringify(todos));
 }
 
 function loadTodos() {
-  const cookies = document.cookie.split("; ");
+  const stored = localStorage.getItem("todos");
+  if (!stored) return;
 
-  for (let cookie of cookies) {
-    if (cookie.startsWith("todos=")) {
-      const data = JSON.parse(
-        decodeURIComponent(cookie.split("=")[1])
-      );
-      data.forEach(text => addTodo(text));
-      break;
-    }
-  }
+  const data = JSON.parse(stored);
+  data.forEach(text => addTodo(text));
 }
 
 loadTodos();
+
