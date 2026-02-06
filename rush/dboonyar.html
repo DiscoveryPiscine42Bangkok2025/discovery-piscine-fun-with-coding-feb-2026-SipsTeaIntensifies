@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Mr. Bid's Profile</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #120000;
+  color: white;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(40, 0, 0, 0.95);
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 12px;
+  z-index: 999;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: crimson;
+}
+
+section {
+  min-height: 100vh;
+  padding: 120px 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#profile {
+  background: linear-gradient(135deg, #220000, #500000);
+  text-align: center;
+}
+
+.profile-pic {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 3px solid crimson;
+  object-fit: cover;
+}
+
+#showcase {
+  background: #1a0000;
+}
+
+.showcase-box {
+  border: 2px solid crimson;
+  padding: 20px;
+  margin-top: 16px;
+}
+
+#contact {
+  background: #0f0000;
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0;
+}
+
+.contact-row img {
+  width: 32px;
+  height: 32px;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="hub.html" class="return-btn">← Return</a>
+
+
+  <a href="#profile">Profile</a>
+  <a href="#showcase">Showcase</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section id="profile">
+  <img class="profile-pic" src="dbpfp.png">
+
+  <h1>"Mr. Bid"</h1>
+  <h3>Job: The Great Thief</h3>
+
+  <p>
+    "Ain't no wallet gonna sit still forever."
+  </p>
+</section>
+
+<section id="showcase">
+  <h2>Showcase</h2>
+
+  <div class="showcase-box">
+    <p>Tracked and lifted a corrupt official’s personal drive, leaking evidence anonymously.</p>
+  </div>
+
+  <div class="showcase-box">
+    <p>Allegedly stole a prototype device before it was even announced publicly.</p>
+  </div>
+
+  <div class="showcase-box">
+    <p>Evaded CCTV across an entire district — no clear face ever captured.</p>
+  </div>
+
+  <div class="showcase-box">
+    <p>Never caught. Never identified. Never confirmed.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+
+  <div class="contact-row">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png">
+    <a href="https://www.facebook.com/CasterboyTH" target="_blank">ดนุเดช เบิกเนตรแบบเทพทรู</a>
+  </div>
+
+  <div class="contact-row">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111498.png">
+    <a>casterboyth</a>
+  </div>
+
+  <div class="contact-row">
+    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
+    <a href="https://www.youtube.com/@SipsTeaIntensifies" target="_blank">SipsTea</a>
+  </div>
+</section>
+
+</body>
+</html>
